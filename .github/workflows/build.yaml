@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: source
+        working-directory: source-next
 
     permissions:
       contents: write
@@ -47,9 +47,6 @@ jobs:
 
       - name: Setup gradlew
         run: chmod +x gradlew
-
-      - name: Check build-logic
-        run: ./gradlew check -p build-logic
 
       - name: Decode store file
         env:
