@@ -83,7 +83,11 @@ jobs:
           ./gradlew $TASKS --daemon --parallel
 
       - name: Move APKs
-        run: mv ./*/build/outputs/apk/*/release/*.apk .
+        run: |
+          ls -lh */build/outputs/apk/*/*/*.apk
+          echo
+          find . -type f -name *.apk -exec ls -lh {} \;
+          find . -type f -name *.apk -exec mv {} . \;
 
       - name: Upload APKs
         uses: actions/upload-artifact@v7
