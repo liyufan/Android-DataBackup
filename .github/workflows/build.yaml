@@ -41,19 +41,11 @@ jobs:
       - name: Set up JDK 21
         uses: actions/setup-java@v5
         with:
-          distribution: 'temurin'
+          distribution: 'zulu'
           java-version: 21
 
       - name: Setup gradle
         uses: gradle/actions/setup-gradle@v6
-
-      - name: Fix Rust toolchain conflict
-        run: |
-          rustup update
-          rustup component remove rust-std-aarch64-linux-android || true
-          rustup target add aarch64-linux-android || true
-          cargo clean || true
-          rm -rf ~/.cargo/registry/cache ~/.cargo/git/db
 
       - name: Setup gradlew
         run: chmod +x gradlew
